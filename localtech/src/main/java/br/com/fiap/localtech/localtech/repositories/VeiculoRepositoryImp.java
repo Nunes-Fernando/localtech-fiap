@@ -34,22 +34,42 @@ public class VeiculoRepositoryImp implements VeiculoRepository{
 
 	@Override
 	public Integer save(Veiculos veiculo) {
-		
-		return null;
+	    return jdbcClient.sql("INSERT INTO veiculos (marca, modelo, placa, ano, cor, valor_diaria) " +
+	                          "VALUES (:marca, :modelo, :placa, :ano, :cor, :valorDiaria)")
+	        .param("marca", veiculo.getMarca())
+	        .param("modelo", veiculo.getModelo())
+	        .param("placa", veiculo.getPlaca())
+	        .param("ano", veiculo.getAno())
+	        .param("cor", veiculo.getCor())
+	        .param("valor_diaria", veiculo.getValorDiaria())
+	        .update();
 	}
+	
 
 	@Override
 	public Integer update(Veiculos veiculo, Long id) {
-		
-		return null;
+	    return jdbcClient.sql("UPDATE veiculos SET " +
+	                          "marca = :marca, " +
+	                          "modelo = :modelo, " +
+	                          "placa = :placa, " +
+	                          "ano = :ano, " +
+	                          "cor = :cor, " +
+	                          "valorDiaria = :valorDiaria " +
+	                          "WHERE id = :id")
+	        .param("marca", veiculo.getMarca())
+	        .param("modelo", veiculo.getModelo())
+	        .param("placa", veiculo.getPlaca())
+	        .param("ano", veiculo.getAno())
+	        .param("cor", veiculo.getCor())
+	        .param("valorDiaria", veiculo.getValorDiaria())
+	        .param("id", id)
+	        .update();
 	}
 
 	@Override
 	public Integer delete(Long id) {
-		
-		return null;
+	    return jdbcClient.sql("DELETE FROM veiculos WHERE id = :id")
+	        .param("id", id)
+	        .update();
 	}
-	
-	
-	
 }
