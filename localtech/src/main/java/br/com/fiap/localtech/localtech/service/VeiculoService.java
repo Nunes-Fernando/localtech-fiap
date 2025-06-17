@@ -27,7 +27,7 @@ public class VeiculoService {
 		return this.repository.findById(id);
 	}
 	
-	public void saveVieculo (Veiculos veiculo) {
+	public void saveVeiculo (Veiculos veiculo) {
 		var save = this.repository.save(veiculo);
 		Assert.state(save == 1, "Erro ao salvar veiculos" + veiculo.getModelo());
 	}
@@ -48,5 +48,4 @@ public class VeiculoService {
 		}
 		
 	}
-	
 }
