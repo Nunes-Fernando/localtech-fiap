@@ -1,5 +1,5 @@
 LocalTech é um sistema de gerenciamento de veículos desenvolvido durante a Pós-Tech FIAP com foco em Spring MVC. O projeto apresenta uma arquitetura simples para reforçar conceitos básicos do desenvolvimento backend com Java e Spring Boot.
-
+_______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 Funcionalidades Implementadas
 CRUD completo para gerenciamento de Veículos
 
@@ -10,10 +10,10 @@ Banco de dados em memória H2 com scripts automáticos para criação e popular 
 Paginação para listagem de veículos e pessoas
 
 Acesso ao console web do H2 para visualização dos dados
-
+_______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 Funcionalidades em Desenvolvimento
 Módulo de Aluguel (em desenvolvimento)
-
+_______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 Tecnologias Utilizadas
 Java 21
 
@@ -32,7 +32,7 @@ Postman (para testes da API)
 Banco de Dados
 H2 Database em memória
 
-Console acessível via http://localhost:9090/h2-console (porta configurável)
+Console acessível via http://localhost:8080/h2-console (porta configurável)
 
 Credenciais padrão:
 
