@@ -16,13 +16,11 @@ INSERT INTO veiculos (marca, modelo, placa, ano, cor, valor_diaria) VALUES
 	
 	
 CREATE TABLE pessoa (
-	
-	id BIGINT AUTO_INCREMENT PRIMARY KEY,
-	nome VARCHAR (255),
-	cpf VARCHAR (11),
-	telefone VARCHAR (20),
-	email VARCHAR (255),
-	
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(255),
+  cpf VARCHAR(11),
+  telefone VARCHAR(20),
+  email VARCHAR(255)
 );
 
 INSERT INTO pessoa (nome, cpf, telefone, email) VALUES

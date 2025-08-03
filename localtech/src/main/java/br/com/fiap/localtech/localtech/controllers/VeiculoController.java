@@ -16,49 +16,46 @@ import br.com.fiap.localtech.localtech.service.VeiculoService;
 @RequestMapping("/veiculos")
 public class VeiculoController {
 
-	private static final Logger log = LoggerFactory.getLogger(VeiculoController.class);
+    private static final Logger log = LoggerFactory.getLogger(VeiculoController.class);
 
-	private final VeiculoService service;
+    private final VeiculoService service;
 
-	public VeiculoController(VeiculoService service) {
-		this.service = service;
-	}
+    public VeiculoController(VeiculoService service) {
+        this.service = service;
+    }
 
-	@GetMapping
-	public ResponseEntity<List<Veiculos>> findAllVeiculos(@RequestParam("page") int page,
-			@RequestParam("size") int size) {
+    @GetMapping
+    public ResponseEntity<List<Veiculos>> findAllVeiculos(@RequestParam("page") int page,
+                                                         @RequestParam("size") int size) {
+        var veiculos = this.service.findAllVeiculos(page, size);
+        return ResponseEntity.ok(veiculos);
+    }
 
-		var veiculos = this.service.findAllVeiculos(page, size);
-		return ResponseEntity.ok(veiculos);
-	}
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<Veiculos>> findVeiculo(@PathVariable("id") Long id) {
+        var veiculo = this.service.findById(id);
+        return ResponseEntity.ok(veiculo);
+    }
 
-	@GetMapping("/{id}")
-	public ResponseEntity<Optional<Veiculos>> findVeiculo(@PathVariable("id") Long id) {
-		var veiculo = this.service.findById(id);
-		return ResponseEntity.ok(veiculo);
-	}
+    @PostMapping
+    public ResponseEntity<Void> saveVeiculo(@RequestBody Veiculos veiculo) {
+        log.info("POST -> /veiculos");
+        service.saveVeiculo(veiculo);
+        return ResponseEntity.ok().build();
+    }
 
-	@PostMapping
-	public ResponseEntity<Void> saveVeiculo(@RequestBody Veiculos veiculo) {
-		log.info("POST -> /veiculos");
-		service.saveVeiculo(veiculo);
-		return ResponseEntity.ok().build();
-	}
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> updateVeiculo(@PathVariable("id") Long id, @RequestBody Veiculos veiculo) {
+        log.info("PUT -> /veiculos/{}", id);
+        this.service.updateVeiculo(veiculo, id);
+        return ResponseEntity.ok().build();
+    }
 
-	@PutMapping("/{id}")
-	public ResponseEntity<Void> updateVeiculo(@PathVariable("id") Long id, @RequestBody Veiculos veiculo) {
-
-		log.info("PUT -> /veiculos/{}", id);
-		this.service.updateVeiculo(veiculo, id);
-		return ResponseEntity.ok().build();
-	}
-	
-	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> deleteVeiculo(@PathVariable("id") Long id) {
-	    
-	    log.info("DELETE -> /veiculos/{}", id);
-	    this.service.delete(id);
-	    return ResponseEntity.ok().build();
-	    
-	}
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteVeiculo(@PathVariable("id") Long id) {
+        log.info("DELETE -> /veiculos/{}", id);
+        this.service.delete(id);
+        return ResponseEntity.ok().build();
+    }
 }
+
