@@ -1,15 +1,18 @@
-LocalTech - Gerenciamento de Veículos
+LocalTech é um sistema de gerenciamento de veículos desenvolvido durante a Pós-Tech FIAP com foco em Spring MVC. O projeto apresenta uma arquitetura simples para reforçar conceitos básicos do desenvolvimento backend com Java e Spring Boot.
 
-Projeto desenvolvido na Pós-Tech FIAP focado em Spring MVC para gerenciamento básico de veículos. Implementa um sistema CRUD simples com acesso a dados via JDBC Template e banco de dados em memória H2.
+Funcionalidades Implementadas
+CRUD completo para gerenciamento de Veículos
 
-Funcionalidades
-Listagem paginada de veículos
+CRUD completo para gerenciamento de Pessoas
 
-Busca de veículo por ID
+Banco de dados em memória H2 com scripts automáticos para criação e popular dados
 
-Cadastro, atualização e exclusão de veículos
+Paginação para listagem de veículos e pessoas
 
-Console web do banco H2 para visualização dos dados
+Acesso ao console web do H2 para visualização dos dados
+
+Funcionalidades em Desenvolvimento
+Módulo de Aluguel (em desenvolvimento)
 
 Tecnologias Utilizadas
 Java 21
@@ -18,29 +21,36 @@ Spring Boot 3 (Spring MVC)
 
 JDBC Template
 
-H2 Database (banco em memória)
+Banco H2 (em memória)
 
 Maven
 
-Postman (testes de API)
+Docker (para containerização)
+
+Postman (para testes da API)
 
 Banco de Dados
-H2 (em memória)
+H2 Database em memória
 
-Console disponível em http://localhost:9090/h2-console
+Console acessível via http://localhost:9090/h2-console (porta configurável)
 
-Configuração padrão:
+Credenciais padrão:
 
 Usuário: sa
 
 Senha: password
 
-URL: jdbc:h2:mem:localtech
+URL: jdbc:h2:mem:loctech
 
 Como Executar
 Clone o repositório
 
-Entre na pasta do projeto
+Navegue até a pasta do projeto
 
-Execute mvn spring-boot:run (Java 21 deve estar instalado)
+Execute mvn spring-boot:run para rodar localmente
 
+Ou utilize o Docker:
+
+docker build -t localtech-app .
+
+docker run -p 8080:8080 localtech-app
